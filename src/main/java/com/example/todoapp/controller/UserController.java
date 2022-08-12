@@ -1,5 +1,6 @@
 package com.example.todoapp.controller;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import com.example.todoapp.entity.Todo;
@@ -26,6 +27,10 @@ public class UserController {
 	public UserController(UserRepository userRepository, TodoRepository todoRepository) {
 		this.userRepository = userRepository;
 		this.todoRepository = todoRepository;
+	}
+	@GetMapping
+	public List<User> getUser(){
+		return userRepository.findAll();
 	}
 	@GetMapping("/{userId}")
 	public User getUserById(@PathVariable Long userId){
